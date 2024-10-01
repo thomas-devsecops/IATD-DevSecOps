@@ -20,7 +20,7 @@ jobs:
           location: australiaeast
           targetPort: 5000
 
-            submit_results:
+  submit_results:
     needs: [deploy]
     if: true
     runs-on: ubuntu-latest

@@ -115,6 +115,7 @@ jobs:
           path: report_json.json
 
   build:
+    needs: [security_gate]
     if: true
     permissions:
       id-token: write    

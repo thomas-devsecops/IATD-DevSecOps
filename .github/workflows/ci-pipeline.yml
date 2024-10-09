@@ -181,6 +181,7 @@ jobs:
         with:
           name: zap-report
           path: ${{github.workspace}}
+      - uses: actions/download-artifact@v4
         with:
           name: image-report
           path: ${{github.workspace}}

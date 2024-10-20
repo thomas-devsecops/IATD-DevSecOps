@@ -215,7 +215,7 @@ jobs:
         echo "All security gates passed"     
 
   submit_results:
-    if: false
+    if: true
     needs: [build]
     runs-on: ubuntu-latest
     steps:
@@ -257,3 +257,5 @@ jobs:
           echo "Zap upload: $ZAP_RESPONSE"
           IMAGE_RESPONSE=$(curl -X POST -H "Authorization: Bearer $AZURE_ACCESS_TOKEN" --data-binary @$GITHUB_WORKSPACE/results.json https://devsecops-ver.azurewebsites.net/api/week4-image-report)
           echo "Image report upload: $IMAGE_RESPONSE"
+          WEEK5_RESPONSE=$(curl -X POST  -H "Authorization: Bearer $AZURE_ACCESS_TOKEN"  -d "$IMAGE" https://devsecops-ver.azurewebsites.net/api/week5-report)
+          echo "Week5 report upload: $WEEK5_RESPONSE"

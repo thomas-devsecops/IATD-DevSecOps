@@ -145,6 +145,9 @@ jobs:
           IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/devops-labs:latest
         run: |
           cosign sign --yes ${IMAGE}
+      - name: Verify Image Signature
+        run: |
+          cosign verify ${IMAGE}
 
         
   image-scan:

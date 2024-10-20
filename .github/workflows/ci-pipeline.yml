@@ -144,10 +144,13 @@ jobs:
         env:
           IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/devops-labs:latest
         run: |
+          IMAGE=${{ secrets.DOCKERHUB_USERNAME }}/devops-labs:latest
           cosign sign --yes ${IMAGE}
       - name: Verify Image Signature
         run: |
+          IMAGE=${{ secrets.DOCKERHUB_USERNAME }}/devops-labs:latest
           cosign verify ${IMAGE}
+
 
         
   image-scan:

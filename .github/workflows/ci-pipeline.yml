@@ -30,7 +30,7 @@ jobs:
   sonarqube:
     needs: test
     runs-on: ubuntu-latest
-    if: false    
+    if: true    
     steps:
       - uses: actions/checkout@v3
         with:
@@ -58,7 +58,7 @@ jobs:
   dast:
     needs: test
     runs-on: ubuntu-latest
-    if: false
+    if: true
     steps:
       - uses: actions/checkout@v4
       - name: Set up QEMU
@@ -115,7 +115,7 @@ jobs:
           path: report_json.json
 
   build:
-    needs: [test, image-scan]
+    needs: [dast, sonarqube, image-scan]
     if: true
     permissions:
       id-token: write    
